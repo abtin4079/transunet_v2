@@ -95,7 +95,9 @@ class TrainTestPipe:
                                 "IOU": metrics[0] , 
                                 "DSC": 1 -  train_loss / len(self.train_loader),
                                 "F1-score": metrics[1] , 
-                                "accuracy": metrics[2]})
+                                "accuracy": metrics[2], 
+                                "recall": metrics[3], 
+                                "precision": metrics[4]})
 
             train_loss_plot.append(train_loss / len(self.train_loader))
             test_loss_plot.append(test_loss[0] / len(self.test_loader))

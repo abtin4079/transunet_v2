@@ -39,13 +39,13 @@ class TransUNetSeg:
         loss = self.criterion(pred_mask, params['mask'])
         IOU = intersection_over_union(pred_mask, params['mask'])
         acc = accuracy(pred_mask, params['mask'])
-        F1 = f1_score(pred_mask, params['mask'])
+        F1, recall, precision = f1_score(pred_mask, params['mask'])
 
         loss.backward()
 
         self.optimizer.step()
 
-        metrics = [IOU , F1 , acc]
+        metrics = [IOU , F1 , acc, recall, precision]
 
         return loss.item(), pred_mask , metrics
 
