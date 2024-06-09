@@ -39,15 +39,15 @@ class TrainTestPipe:
 
     def __loop(self, loader, step_func, t):
         total_loss = 0
-
+        metrics = [0,0,0,0,0]
         for step, data in enumerate(loader):
             img, img_sail, mask = data['img'], data['img_sail'], data['mask']
             img = img.to(self.device)
             img_sail = img_sail.to(self.device)
             mask = mask.to(self.device)
 
-            loss, cls_pred , metrics = step_func(img=img, img_sail=img_sail, mask=mask)
-
+            loss, cls_pred , metric = step_func(img=img, img_sail=img_sail, mask=mask)
+            metrics = [sum(x) for x in zip(metrics, metric)]
             total_loss += loss
 
             t.update()
@@ -92,12 +92,12 @@ class TrainTestPipe:
             callback.epoch_end(epoch + 1,
                                {'train_loss': train_loss / len(self.train_loader),
                                 'test_loss': test_loss[0] / len(self.test_loader), 
-                                "IOU": metrics[0] , 
+                                "IOU": metrics[0] / len(self.train_loader), 
                                 "DSC": 1 -  train_loss / len(self.train_loader),
-                                "F1-score": metrics[1] , 
-                                "accuracy": metrics[2], 
-                                "recall": metrics[3], 
-                                "precision": metrics[4]})
+                                "F1-score": metrics[1] / len(self.train_loader), 
+                                "accuracy": metrics[2] / len(self.train_loader), 
+                                "recall": metrics[3] / len(self.train_loader), 
+                                "precision": metrics[4] / len(self.train_loader)}) 
 
             train_loss_plot.append(train_loss / len(self.train_loader))
             test_loss_plot.append(test_loss[0] / len(self.test_loader))
