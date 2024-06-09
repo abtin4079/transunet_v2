@@ -47,7 +47,11 @@ class TrainTestPipe:
             mask = mask.to(self.device)
 
             loss, cls_pred , metric = step_func(img=img, img_sail=img_sail, mask=mask)
-            metrics = [sum(x) for x in zip(metrics, metric)]
+            metrics[0] += metric[0]
+            metrics[1] += metric[1]
+            metrics[2] += metric[2]
+            metrics[3] += metric[3]
+            metrics[4] += metric[4]
             total_loss += loss
 
             t.update()
