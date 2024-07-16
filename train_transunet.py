@@ -46,7 +46,7 @@ class TransUNetSeg:
         self.optimizer.step()
 
         metrics = [IOU , F1 , acc, recall, precision]
-
+        
         return loss.item(), pred_mask , metrics
 
     def test_step(self, **params):
@@ -54,7 +54,10 @@ class TransUNetSeg:
 
         pred_mask = self.model(params['img'], params['img_sail'])
         loss = self.criterion(pred_mask, params['mask'])
-        
-        a = 0
+        IOU = intersection_over_union(pred_mask, params['mask'])
+        acc = accuracy(pred_mask, params['mask'])
+        F1, recall, precision = f1_score(pred_mask, params['mask'])
 
-        return loss.item(), pred_mask , a
+        metrics = [IOU , F1 , acc, recall, precision]
+
+        return loss.item(), pred_mask , metrics

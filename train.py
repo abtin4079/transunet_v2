@@ -39,7 +39,7 @@ class TrainTestPipe:
 
     def __loop(self, loader, step_func, t):
         total_loss = 0
-        metrics = [0,0,0,0,0]
+        metrics = [0.0000,0.0000,0.0000,0.0000,0.0000]
         for step, data in enumerate(loader):
             img, img_sail, mask = data['img'], data['img_sail'], data['mask']
             img = img.to(self.device)
@@ -47,11 +47,12 @@ class TrainTestPipe:
             mask = mask.to(self.device)
 
             loss, cls_pred , metric = step_func(img=img, img_sail=img_sail, mask=mask)
-            metrics[0] += metric[0]
-            metrics[1] += metric[1]
-            metrics[2] += metric[2]
-            metrics[3] += metric[3]
-            metrics[4] += metric[4]
+            #print(f"metric: {metric[0]}, type: {type(metric[0])}")
+            metrics[0] = round(metrics[0] + metric[0], 4)
+            metrics[1] = round(metrics[1] + metric[1], 4)
+            metrics[2] = round(metrics[2] + metric[2], 4)
+            metrics[3] = round(metrics[3] + metric[3], 4)
+            metrics[4] = round(metrics[4] + metric[4], 4)
             total_loss += loss
 
             t.update()
