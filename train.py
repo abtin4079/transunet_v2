@@ -119,7 +119,7 @@ class TrainTestPipe:
             plt.legend()
     
             # Save the plot to the same file, overwriting the previous plot
-            plt.savefig('/kaggle/working/plot1.png')
+            #plt.savefig('/kaggle/working/plot1.png')
             plt.close()  # Close the figure to free memory      
 
 
@@ -133,7 +133,7 @@ class TrainTestPipe:
             plt.legend()
     
             # Save the plot to the same file, overwriting the previous plot
-            plt.savefig('/kaggle/working/plot2.png')
+            #plt.savefig('/kaggle/working/plot2.png')
             plt.close()  # Close the figure to free memory 
 
             if callback.end_training:
