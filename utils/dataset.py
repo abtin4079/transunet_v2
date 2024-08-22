@@ -16,7 +16,7 @@ class DentalDataset(Dataset):
         self.transform = transform
 
         img_folder = os.path.join(path, 'img')
-        img_sail_folder = os.path.join(sail_path, 'gradcam_img_eff')
+        img_sail_folder = os.path.join(sail_path, 'grad_img')
         mask_folder = os.path.join(sail_path, 'mask')
 
         self.img_paths = []
