@@ -13,7 +13,7 @@
 
 ## Training
 - Training process can be started with following command.
-    - `python main.py --mode train --model_path ./path/to/model --train_path ./path/to/trainset --test_path ./path/to/testset `
+    - `python main.py --mode train --model_path ./path/to/model --train_path ./path/to/trainset  --train_sail_path ./path/to/gradcam-trainset --test_path ./path/to/testset  --test_sail_path ./path/to/gradcam-testset`
 
 ## Inference
 - After model is trained, inference can be run with following command.
