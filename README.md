@@ -9,6 +9,8 @@
 
 ## Dataset
 - kvasir dataset was used for training.
+- First, you should generate the Grad-Cam Images with this github repository[gradcam pytorch](https://github.com/kazuto1011/grad-cam-pytorch)
+- you can choose differnet models to generate the heatmaps based on them (in my work resenet was the best model in generating heatmaps!)
 
 
 ## Training
