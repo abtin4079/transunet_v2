@@ -1,26 +1,15 @@
-# Panoramic Dental X-Ray Image Semantic Segmentation with TransUnet
-The unofficial implementation of [TransUNet: Transformers Make Strong Encoders for Medical Image Segmentation](https://arxiv.org/abs/2102.04306) on Pytorch
-
-![Output](./assets/outs.png "Output")
-*Output of my implementation. (A) Original X-Ray Image; (B) Merged Image of the Predicted Segmentation Map and Original X-Ray; (C) Ground Truth; (D) Predicted Segmentation Map*
-
-## TransUNet
-- On various medical image segmentation tasks, the ushaped architecture, also known as U-Net, has become the de-facto standard and achieved tremendous success. However, due to the intrinsic
-locality of convolution operations, U-Net generally demonstrates limitations in explicitly modeling long-range dependency. [1]
-- TransUNet employs a hybrid CNN-Transformer architecture to leverage both detailed high-resolution spatial information from CNN features and the global context encoded by Transformers. [1]
-
 ## Model Architecture
-![Model Architecture](./assets/arch.png "Model Architecure")
+![Model Architecture](./assets/grad-tranunet.drawio.png "Model Architecure")
 
-*TransUNet Architecture Figure from Official Paper*
+*Grad-TransUNet Architecture Figure from Official Paper*
 
 ## Dependencies
 - Python 3.6+
 - `pip install -r requirements.txt`
 
 ## Dataset
-- UFBA_UESC_DENTAL_IMAGES[2] dataset was used for training.
-- Dataset can be accessed by request[3].
+- kvasir dataset was used for training.
+
 
 ## Training
 - Training process can be started with following command.
