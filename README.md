@@ -28,4 +28,3 @@
 ## References
 - [1] [TransUNet: Transformers Make Strong Encoders for Medical Image Segmentation](https://arxiv.org/abs/2102.04306)
 - [2] [Automatic segmenting teeth in X-ray images: Trends, a novel data set, benchmarking and future perspectives](https://www.sciencedirect.com/science/article/abs/pii/S0957417418302252)
-- [3] [GitHub Repository of Dataset](https://github.com/IvisionLab/dental-image)
